@@ -2,23 +2,20 @@ package com.authorizer.authorizer.role;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class RoleSeeder implements ApplicationRunner {
     private final RoleRepository roleRepository;
     private static final Logger log = LoggerFactory.getLogger(RoleSeeder.class);
-
-    @Autowired
-    public RoleSeeder(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
 
     @Override
     public void run(ApplicationArguments args) {
