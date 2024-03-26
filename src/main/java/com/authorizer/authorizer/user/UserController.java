@@ -1,7 +1,8 @@
 package com.authorizer.authorizer.user;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +18,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
     
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
     
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<UserResponseDTO> create(@RequestBody UserRequestDTO user) {
-        UserResponseDTO userData = userService.create(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userData);
+        return userService.create(user);
     }
 }
